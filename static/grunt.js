@@ -2,8 +2,28 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        compass : {
-            config : 'compass.conf.rb'
+        compass: {
+            dev: {
+                src: 'sass',
+                dest: 'css',
+                linecomments: true,
+                forcecompile: true,
+                require: '',
+                debugsass: true,
+                images: 'images',
+                relativeassets: true
+            },
+            prod: {
+                src: 'sass',
+                dest: 'css',
+                outputstyle: 'compressed',
+                linecomments: false,
+                forcecompile: true,
+                require: '',
+                debugsass: false,
+                images: 'images',
+                relativeassets: true
+            }
         },
         coffee : {
             dest : 'js',
@@ -30,8 +50,16 @@ module.exports = function (grunt) {
         },
         postCleanup : {
             folders : ['-p']
+        },
+        watch : {
+            coffee : {
+                files : ['coffee/*.coffee', 'coffee/**/*.coffee'],
+                tasks : 'dev'
+            }
         }
     });
+
+    grunt.loadNpmTasks('grunt-compass');
 
     grunt.registerTask('dev', 'preCleanup compass coffee vendor postCleanup');
     grunt.registerTask('prod', 'preCleanup compass:prod coffee vendor optimise:prod postCleanup');
@@ -97,11 +125,6 @@ module.exports = function (grunt) {
             } catch(err) {}
         }
     };
-
-    grunt.registerTask('compass', 'Compile sass files', function () {
-        var cmd = 'bundle exec compass compile --config ' + grunt.config.get(this.name).config;
-        exec(this.flags.prod ? cmd += ' --output-style compressed --force' : cmd, this.async());
-    });
 
     grunt.registerTask('coffee', 'Compile CoffeeScript files', function () {
         coffee(grunt.config.get(this.name).src, grunt.config.get(this.name).dest, this.async());

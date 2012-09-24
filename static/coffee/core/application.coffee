@@ -4,5 +4,6 @@ define(
 		new class Application
 
 			init: ->
+
 				
 )
