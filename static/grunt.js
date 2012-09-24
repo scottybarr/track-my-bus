@@ -8,7 +8,6 @@ module.exports = function (grunt) {
                 dest: 'css',
                 linecomments: true,
                 forcecompile: true,
-                require: '',
                 debugsass: true,
                 images: 'images',
                 relativeassets: true
@@ -19,7 +18,6 @@ module.exports = function (grunt) {
                 outputstyle: 'compressed',
                 linecomments: false,
                 forcecompile: true,
-                require: '',
                 debugsass: false,
                 images: 'images',
                 relativeassets: true

@@ -181,3 +181,5 @@ phantomjs*
 node_modules
 dist/css
 static/js*
+*shrinkwrap*
+static/css*
