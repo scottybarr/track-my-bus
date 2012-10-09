@@ -1,6 +1,7 @@
 import requests
 from api.settings import SERVICE_BASE_URL, WEB_SERVICES
 
+
 class Stops:
     def __init__(self):
         pass

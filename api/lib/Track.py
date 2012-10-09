@@ -1,6 +1,7 @@
 import requests
 from api.settings import SERVICE_BASE_URL, BUS_TRACKER
 
+
 class Search():
     """docstring for Search"""
     def __init__(self):
