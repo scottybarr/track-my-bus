@@ -1,1 +1,3 @@
-BUS_TRACKER_BASE_URL = "http://lothianbuses.com/planner/_WebServices.php"
+SERVICE_BASE_URL = "http://lothianbuses.com/planner/"
+WEB_SERVICES = "_WebServices.php"
+BUS_TRACKER = "_BusTracker.php"
