@@ -1,0 +1,1 @@
+BUS_TRACKER_BASE_URL = "http://lothianbuses.com/planner/_WebServices.php"
