@@ -1,5 +1,5 @@
 import requests
-from api.settings import SERVICE_BASE_URL, WEB_SERVICES
+from api.settings import SERVICE_BASE_URL, WEB_SERVICES, BUS_TRACKER
 
 
 class Stops:
@@ -12,9 +12,9 @@ class Stops:
             WEB_SERVICES,
             '?func=stops_nearby',
             '&lat=',
-            lat,
+            str(lat),
             '&lng=',
-            long
+            str(long)
         ]
 
         r = requests.get("".join(query_string))
@@ -23,11 +23,10 @@ class Stops:
     def by_stop_code(self, stop_code):
         query_string = [
             SERVICE_BASE_URL,
-            WEB_SERVICES,
-            '?func=stop_info',
-            '&stop_code=',
-            stop_code
+            BUS_TRACKER,
+            '?stop_code=',
+            str(stop_code)
         ]
-
+        print "".join(query_string)
         r = requests.get("".join(query_string))
         return r.json
