@@ -38,7 +38,11 @@
                             <tbody>
                                 {% for t in b['times'] %}
                                     <tr>
-                                        <td>{{ t['mins']}}</td>
+                                        {% if t['mins'] > 30 %}
+                                            <td>{{ t['time']}}</td>
+                                        {% else %}
+                                            <td>{{ t['mins']}}</td>
+                                        {% endif %}
                                         <td>{{ t['destination']}}</td>
                                     </tr>
                                 {% endfor %}
