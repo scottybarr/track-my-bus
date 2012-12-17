@@ -25,6 +25,9 @@
 
             <!-- Example row of columns -->
             <div class="row">
+                <div class="span12">
+                    <h1>{{ buses['stop_info']['stop_name'] }} - {{ buses['stop_info']['stop_code'] }}</h1>
+                </div>
                 {% for b in buses['services'] %}
                     <div class="span{{ span_width }}">
                         <h2>Service {{ b['service_name'] }}</h2>
