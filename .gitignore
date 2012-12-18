@@ -183,3 +183,4 @@ dist/css
 static/js*
 *shrinkwrap*
 static/css*
+config/dev.py
