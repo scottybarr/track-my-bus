@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from api.lib.Stops import Stops
+from api.Stops import Stops
 from datetime import datetime
 
 app = Flask(__name__)
