@@ -1,5 +1,5 @@
 import requests
-from api.settings import SERVICE_BASE_URL, WEB_SERVICES, BUS_TRACKER
+from config import SERVICE_BASE_URL, WEB_SERVICES, BUS_TRACKER
 
 
 class Stops:
