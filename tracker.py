@@ -4,8 +4,6 @@ from datetime import datetime
 
 app = Flask(__name__)
 
-STOPS = Stops()
-
 
 @app.route('/')
 def index():
@@ -18,7 +16,7 @@ def search_by_stop_code(bus_stop_code):
 
 
 def get_page_data(stop_code=36239637):
-    buses = STOPS.by_stop_code(stop_code)
+    buses = Stops().by_stop_code(stop_code)
     return {
         'year': datetime.now().year,
         'buses': buses,
