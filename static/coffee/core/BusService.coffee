@@ -1,0 +1,5 @@
+define(
+	['jquery'],
+	($) ->
+		class BusService
+)
