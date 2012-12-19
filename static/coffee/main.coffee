@@ -1,9 +1,9 @@
 require.config(
-    baseUrl : "#{STATIC_URL}js/"
+    baseUrl : "/static/js/"
     paths :
-        jquery     : "#{STATIC_URL}js/vendor/jquery/jquery-1.8.1.min"
-        underscore : "#{STATIC_URL}js/vendor/underscore/underscore-min"
-        backbone   : "#{STATIC_URL}js/vendor/backbone/backbone-min"
+        jquery     : "/static/js/vendor/jquery/jquery-1.8.1.min"
+        underscore : "/static/js/vendor/underscore/underscore-min"
+        backbone   : "/static/js/vendor/backbone/backbone-min"
 
     shim :
         'backbone' :
@@ -13,5 +13,5 @@ require.config(
 require(
     [ 'core/application' ]
     ( app )->
-        app.init() if ( INIT_APPLICATION ? false )
+        app.init()
 )
