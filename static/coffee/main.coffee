@@ -1,9 +1,9 @@
 require.config(
     baseUrl : "/static/js/"
     paths :
-        jquery     : "/static/js/vendor/jquery/jquery-1.8.1.min"
-        underscore : "/static/js/vendor/underscore/underscore-min"
-        backbone   : "/static/js/vendor/backbone/backbone-min"
+        jquery     : "/static/js/vendor/jquery-1.8.3.min"
+        underscore : "/static/js/vendor/underscore-min"
+        backbone   : "/static/js/vendor/backbone-min"
 
     shim :
         'backbone' :

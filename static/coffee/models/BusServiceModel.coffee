@@ -1,5 +1,5 @@
 define(
-	['underscore', 'Backbone'],
+	['underscore', 'backbone'],
 	(_, Backbone) ->
 		class BusServiceModel extends Backbone.Model
 
@@ -7,5 +7,5 @@ define(
 				service_number: null
 				stop_code: null
 				due_times: []
-				service_info: {}
+				stop_info: {}
 )

@@ -1,6 +1,6 @@
 define(
-	['models/BusServiceModel'],
-	(BusServiceModel) ->
+	['backbone', 'models/BusServiceModel'],
+	(Backbone, BusServiceModel) ->
 
 		class BusServiceCollection extends Backbone.Collection
 			

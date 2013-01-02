@@ -1,7 +1,8 @@
 define(
-    [ 'jquery', 'underscore', 'backbone' ]
-    ( $, _, Backbone )->
-    	new class Application
-    		init: ->
-    			console.log 'App'
+    [ 'jquery', 'underscore', 'backbone', 'core/BusService' ]
+    ( $, _, Backbone, BusService )->
+    	  new class Application
+    		    init: ->
+                    @bus = new BusService()
+                    @bus.getBuses()
 )

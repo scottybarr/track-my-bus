@@ -179,7 +179,10 @@ phantomjs*
 *.sublime*
 node_modules
 dist/css
-static/js*
+static/js/core*
+static/js/models*
+static/js/views*
+static/js/*.js
 *shrinkwrap*
 static/css*
 config/dev.py
