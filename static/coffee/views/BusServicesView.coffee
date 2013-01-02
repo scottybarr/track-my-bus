@@ -7,6 +7,7 @@ define(
 
     		initialize: ->
                 console.log 'initialized view'
+                @model.bind('reset', @render)
 
     		render: ->
                 console.log 'rendering!'

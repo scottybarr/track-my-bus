@@ -15,7 +15,6 @@ define(
                 @busView = new BusServicesView(
                     model: @busCollection
                 )
-                console.log @busView
 
             getBuses: ->
                 $.ajax(
@@ -33,5 +32,5 @@ define(
                         due_times: service.times
                         stop_info: data.stop_info
                     ))
-                @busCollection = new BusServiceCollection(buses)
+                @busCollection.reset(buses)
 )
