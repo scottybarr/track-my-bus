@@ -3,9 +3,11 @@ define(
     ( _, Backbone )->
     	class BusServicesView extends Backbone.View
     		
-    		el: $('#services')
+    		el: $('#stop-container')
 
     		initialize: ->
+                console.log 'initialized view'
 
     		render: ->
+                console.log 'rendering!'
 )
