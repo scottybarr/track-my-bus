@@ -9,6 +9,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', **get_page_data())
 
+
 @app.route('/api/<bus_stop_code>/')
 def json_stop(bus_stop_code):
     return jsonify(Stops().by_stop_code(bus_stop_code))

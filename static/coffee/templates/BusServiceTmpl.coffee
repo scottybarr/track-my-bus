@@ -3,8 +3,7 @@ define(
         displayAllBusesForStop: ->
             """
             <div class="span<%= span_width %>">
-                <h2>Service <%= service_number %></h2>
-                <table class="table table-striped">
+                <h2>Service <%= service_number %></h2><table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Time</th>
@@ -19,11 +18,7 @@ define(
         individualBusTime: ->
             """
             <tr>
-                <% if (mins > 30) { %>
-                    <td><%= time %></td>
-                <% } else { %>
-                    <td><%= mins %></td>
-                <% } %>
+                <td><% if (mins > 30) { %> <%= time %><<% } else { %><%= mins %><% } %></td>
                 <td><%= destination %></td>
             </tr>
             """

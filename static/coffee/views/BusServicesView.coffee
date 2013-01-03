@@ -34,6 +34,5 @@ define(
                             destination: t.destination
                     ) for t in bus.due_times
                 )) for bus in @model.toJSON()
-                console.log(buses)
-                @$el.html($(buses.join('')))
+                @$el.html($(buses.join(''))
 )
