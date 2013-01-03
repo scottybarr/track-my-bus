@@ -4,10 +4,11 @@ define(
     	class BusServicesView extends Backbone.View
 
     		initialize: ->
-                @tmpl =
+                @tmpl = {
                     serviceTmpl : _.template(busServiceTmpl.individualBusTime())
                     allBusesTmpl: _.template(busServiceTmpl.displayAllBusesForStop())
                     stopInfo    : _.template(busServiceTmpl.displayBusStopInfo())
+                }
                 @model.bind('reset', @render)
 
             getSpanWidth: ->
@@ -34,5 +35,5 @@ define(
                             destination: t.destination
                     ) for t in bus.due_times
                 )) for bus in @model.toJSON()
-                @$el.html($(buses.join(''))
+                @$el.html($(buses.join('')))
 )
