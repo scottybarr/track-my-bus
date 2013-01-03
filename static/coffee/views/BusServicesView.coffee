@@ -5,14 +5,25 @@ define(
 
     		initialize: ->
                 @tmpl =
-                    serviceTmpl: _.template(busServiceTmpl.individualBusTime())
+                    serviceTmpl : _.template(busServiceTmpl.individualBusTime())
                     allBusesTmpl: _.template(busServiceTmpl.displayAllBusesForStop())
+                    stopInfo    : _.template(busServiceTmpl.displayBusStopInfo())
                 @model.bind('reset', @render)
 
             getSpanWidth: ->
                 parseInt(12 / @model.toJSON().length, 10)
 
+            renderStopInfo: ->
+                info = @model.toJSON()[0].stop_info
+                $('#stop-info').html(
+                    @tmpl.stopInfo(
+                        stop_name: info.stop_name
+                        stop_code: info.stop_code
+                    )
+                )
+
     		render: =>
+                @renderStopInfo()
                 buses = []
                 buses.push(@tmpl.allBusesTmpl(
                     span_width: @getSpanWidth()

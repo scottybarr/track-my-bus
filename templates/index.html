@@ -21,45 +21,14 @@
     </head>
     <body>
 
-        <div id="stop-container" class="container">
 
-        </div>
 
         <div class="container">
+            <div id="stop-info" class="row">
 
-            <!-- Example row of columns -->
-            <div class="row">
-                <div class="span12">
-                    <h1>{{ buses['stop_info']['stop_name'] }} - {{ buses['stop_info']['stop_code'] }}</h1>
-                </div>
             </div>
 
-            <div class="row" id="services">
-                {% for b in buses['services'] %}
-                    <div class="span{{ span_width }}">
-                        <h2>Service {{ b['service_name'] }}</h2>
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Destination</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for t in b['times'] %}
-                                    <tr>
-                                        {% if t['mins'] > 30 %}
-                                            <td>{{ t['time']}}</td>
-                                        {% else %}
-                                            <td>{{ t['mins']}}</td>
-                                        {% endif %}
-                                        <td>{{ t['destination']}}</td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                {% endfor %}
+            <div id="stop-container" class="row">
             </div>
 
             <hr>

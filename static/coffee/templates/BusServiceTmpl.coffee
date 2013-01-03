@@ -28,4 +28,10 @@ define(
             </tr>
             """
 
+        displayBusStopInfo: ->
+            """
+            <div class="span12">
+                <h1><%= stop_name %> - <%= stop_code %></h1>
+            </div>
+            """
 )
