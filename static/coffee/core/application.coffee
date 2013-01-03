@@ -13,6 +13,7 @@ define(
 
             initViews: ->
                 @busView = new BusServicesView(
+                    el: $('#stop-container')
                     model: @busCollection
                 )
 
