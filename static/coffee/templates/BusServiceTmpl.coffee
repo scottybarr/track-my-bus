@@ -18,7 +18,7 @@ define(
         individualBusTime: ->
             """
             <tr>
-                <td><% if (mins > 30) { %> <%= time %><<% } else { %><%= mins %><% } %></td>
+                <td><% if (mins > 30) { %><%= time %><% } else { %><%= mins %><% } %></td>
                 <td><%= destination %></td>
             </tr>
             """
