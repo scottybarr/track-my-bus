@@ -1,6 +1,6 @@
 define(
-	[ 'underscore', 'backbone', 'templates/busServiceTmpl' ]
-    ( _, Backbone, busServiceTmpl )->
+	[ 'underscore', 'backbone', 'templates/busServiceTmpl', 'models/BusStopModel' ]
+    ( _, Backbone, busServiceTmpl, busStopModel )->
     	class BusServicesView extends Backbone.View
 
     		initialize: ->
@@ -14,7 +14,7 @@ define(
                 parseInt(12 / @model.toJSON().length, 10)
 
             renderStopInfo: ->
-                info = @model.toJSON()[0].stop_info
+                info = busStopModel.toJSON()
                 $('#stop-info').html(
                     @tmpl.stopInfo(
                         stop_name: info.stop_name

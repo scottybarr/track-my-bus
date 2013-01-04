@@ -5,7 +5,5 @@ define(
 
 			defaults:
 				service_number: null
-				stop_code: null
 				due_times: []
-				stop_info: {}
 )

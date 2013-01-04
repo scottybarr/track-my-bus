@@ -1,7 +1,9 @@
 define(
     [ 'jquery', 'underscore', 'backbone', 'views/BusServicesView',
-        'models/BusServiceModel', 'models/BusServiceCollection' ]
-    ( $, _, Backbone, BusServicesView, BusServiceModel, BusServiceCollection )->
+        'models/BusServiceModel', 'models/BusServiceCollection',
+        'models/BusStopModel']
+    ( $, _, Backbone, BusServicesView, BusServiceModel, BusServiceCollection,
+      busStopModel )->
         new class Application
             init: ->
                 @initModels()
@@ -21,17 +23,19 @@ define(
                 $.ajax(
                     url: '/api/36239637/',
                     success: (obj, resp, err) =>
+                        @mapBusStopToModel(obj.stop_info)
                         @mapBusServicesToModel(obj)
                 )
+
+            mapBusStopToModel: (stop_info) ->
+                busStopModel.set(stop_info)
 
             mapBusServicesToModel: (data) ->
                 buses = []
                 for service in data.services
                     buses.push(new BusServiceModel(
                         service_number: service.service_name
-                        stop_code: data.stop_info.stop_code
                         due_times: service.times
-                        stop_info: data.stop_info
                     ))
                 @busCollection.reset(buses)
 )
