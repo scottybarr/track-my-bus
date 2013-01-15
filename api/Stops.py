@@ -4,7 +4,7 @@ from config import SERVICE_BASE_URL, WEB_SERVICES, BUS_TRACKER
 
 class Stops:
     def __init__(self):
-        pass
+        return None
 
     def by_lat_long(self, lat, long):
         query_string = [
@@ -16,7 +16,6 @@ class Stops:
             '&lng=',
             str(long)
         ]
-
         r = requests.get("".join(query_string))
         return r.json
 
@@ -27,6 +26,5 @@ class Stops:
             '?stop_code=',
             str(stop_code)
         ]
-        print "".join(query_string)
         r = requests.get("".join(query_string))
         return r.json
