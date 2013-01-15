@@ -1,14 +1,19 @@
 define(
     [ 'jquery', 'underscore', 'backbone', 'views/BusServicesView',
         'models/BusServiceModel', 'models/BusServiceCollection',
-        'models/BusStopModel']
+        'models/BusStopModel', 'core/router']
     ( $, _, Backbone, BusServicesView, BusServiceModel, BusServiceCollection,
-      busStopModel )->
+      busStopModel, router )->
         new class Application
             init: ->
+                @initRouterEvents()
+                Backbone.history.start();
                 @initModels()
                 @initViews()
-                @getBuses()
+
+            initRouterEvents: ->
+                router.on('route:track', @track)
+                router.on('route:defaultRoute', => @getBuses())
 
             initModels: ->
                 @busCollection = new BusServiceCollection([])
@@ -19,9 +24,9 @@ define(
                     model: @busCollection
                 )
 
-            getBuses: ->
+            getBuses: (stopCode=36239637) ->
                 $.ajax(
-                    url: '/api/36239637/',
+                    url: "/api/#{stopCode}/",
                     success: (obj, resp, err) =>
                         @mapBusStopToModel(obj.stop_info)
                         @mapBusServicesToModel(obj)
@@ -38,4 +43,10 @@ define(
                         due_times: service.times
                     ))
                 @busCollection.reset(buses)
+
+            track: (stopCode) =>
+                @getBuses(stopCode) if @_validateStopCode(stopCode)
+
+            _validateStopCode: (stopCode) ->
+                stopCode.length is 8
 )
