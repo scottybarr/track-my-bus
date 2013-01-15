@@ -11,7 +11,9 @@ define(
                 @model.bind('reset', @render)
 
             getSpanWidth: ->
-                parseInt(12 / @model.toJSON().length, 10)
+                width = parseInt(12 / @model.toJSON().length, 10)
+                return 4 if width < 4
+                width
 
             renderStopInfo: ->
                 info = busStopModel.toJSON()
