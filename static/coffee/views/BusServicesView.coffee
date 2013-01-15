@@ -37,5 +37,5 @@ define(
                     ) for t in bus.due_times
                 )) for bus in @model.toJSON()
                 @$el.html($(buses.join('')))
-                @$el.html(@$el.html().replace(/,,,/g, ''))
+                @$el.html(@$el.html().replace(/,/g, ''))
 )
