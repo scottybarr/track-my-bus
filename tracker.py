@@ -9,6 +9,10 @@ app = Flask(__name__)
 def index():
     return render_template('index.html', **get_page_data())
 
+@app.route('/track/<stop>')
+def track_page(stop):
+    return render_template('index.html', **get_page_data())
+
 
 @app.route('/api/<bus_stop_code>/')
 def json_stop(bus_stop_code):
