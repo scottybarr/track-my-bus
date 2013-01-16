@@ -5,9 +5,9 @@ define(
 
     		initialize: ->
                 @tmpl =
-                    serviceTmpl : _.template(busServiceTmpl.individualBusTime())
-                    allBusesTmpl: _.template(busServiceTmpl.displayAllBusesForStop())
-                    stopInfo    : _.template(busServiceTmpl.displayBusStopInfo())
+                    serviceTmpl  : _.template(busServiceTmpl.individualBusTime())
+                    allBusesTmpl : _.template(busServiceTmpl.displayAllBusesForStop())
+                    stopInfo     : _.template(busServiceTmpl.displayBusStopInfo())
                 @model.bind('reset', @render)
 
             getSpanWidth: ->
@@ -24,18 +24,21 @@ define(
                     )
                 )
 
+            createServiceTmpl: (bus) ->
+                @tmpl.allBusesTmpl(
+                    span_width     : @getSpanWidth()
+                    service_number : bus.service_number
+                    buses          : @tmpl.serviceTmpl(
+                        time            : t.time
+                        mins            : parseInt(t.mins, 10)
+                        destination     : t.destination
+                    ) for t in bus.due_times
+                )
+
     		render: =>
                 @renderStopInfo()
                 buses = []
-                buses.push(@tmpl.allBusesTmpl(
-                    span_width: @getSpanWidth()
-                    service_number: bus.service_number
-                    buses: @tmpl.serviceTmpl(
-                            time: t.time
-                            mins: parseInt(t.mins, 10)
-                            destination: t.destination
-                    ) for t in bus.due_times
-                )) for bus in @model.toJSON()
+                buses.push(@createServiceTmpl(bus)) for bus in @model.toJSON()
                 @$el.html($(buses.join('')))
                 @$el.html(@$el.html().replace(/,/g, ''))
 )
