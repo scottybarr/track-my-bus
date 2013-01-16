@@ -1,5 +1,6 @@
 import requests
 from config import SERVICE_BASE_URL, WEB_SERVICES, BUS_TRACKER
+import simplejson
 
 
 class Stops:
@@ -17,7 +18,7 @@ class Stops:
             str(long)
         ]
         r = requests.get("".join(query_string))
-        return r.json
+        return simplejson.loads(r.text)
 
     def by_stop_code(self, stop_code):
         query_string = [
