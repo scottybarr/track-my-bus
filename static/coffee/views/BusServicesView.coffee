@@ -12,8 +12,7 @@ define(
 
             getSpanWidth: ->
                 width = parseInt(12 / @model.toJSON().length, 10)
-                return 4 if width < 4
-                width
+                if width < 4 then 4 else width
 
             renderStopInfo: ->
                 info = busStopModel.toJSON()

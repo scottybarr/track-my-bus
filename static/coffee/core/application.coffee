@@ -15,8 +15,7 @@ define(
                 router.on('route:track', @track)
                 router.on('route:defaultRoute', => @getBuses())
 
-            initModels: ->
-                @busCollection = new BusServiceCollection([])
+            initModels: -> @busCollection = new BusServiceCollection([])
 
             initViews: ->
                 @busView = new BusServicesView(
@@ -32,21 +31,18 @@ define(
                         @mapBusServicesToModel(obj)
                 )
 
-            mapBusStopToModel: (stop_info) ->
-                busStopModel.set(stop_info)
+            mapBusStopToModel: (stop_info) -> busStopModel.set(stop_info)
 
             mapBusServicesToModel: (data) ->
                 buses = []
                 for service in data.services
                     buses.push(new BusServiceModel(
-                        service_number: service.service_name
-                        due_times: service.times
+                        service_number  : service.service_name
+                        due_times       : service.times
                     ))
                 @busCollection.reset(buses)
 
-            track: (stopCode) =>
-                @getBuses(stopCode) if @_validateStopCode(stopCode)
+            track: (stopCode) => @getBuses(stopCode) if @_validateStopCode(stopCode)
 
-            _validateStopCode: (stopCode) ->
-                stopCode.length is 8
+            _validateStopCode: (stopCode) -> stopCode.length is 8
 )
