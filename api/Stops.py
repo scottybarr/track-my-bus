@@ -28,4 +28,4 @@ class Stops:
             str(stop_code)
         ]
         r = requests.get("".join(query_string))
-        return r.json
+        return simplejson.loads(r.text)
