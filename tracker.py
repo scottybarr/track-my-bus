@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-from api.stops import Stops
+from api.bus_stops import BusStops
 from datetime import datetime
 
 app = Flask(__name__)
@@ -22,7 +22,7 @@ def track_page_stop(stop):
 
 @app.route('/api/<bus_stop_code>/')
 def json_stop(bus_stop_code):
-    return jsonify(Stops().by_stop_code(bus_stop_code))
+    return jsonify(BusStops().by_stop_code(bus_stop_code))
 
 
 def render_home_page():
