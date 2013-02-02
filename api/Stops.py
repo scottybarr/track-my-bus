@@ -5,7 +5,7 @@ import simplejson
 
 class Stops:
     def __init__(self):
-        return None
+        pass
 
     def by_lat_long(self, lat, long):
         query_string = [
